@@ -1,0 +1,52 @@
+import random
+import os
+import art
+def game():
+    play=True
+    while play:
+        print(art.logo)
+        def loop():
+            game_on = True
+            while game_on:
+                for i in reversed(diff):
+                    print(f"You have {i} attempts to guess the number.")
+                    user_guess = int(input("Enter your guess: "))
+                    if user_guess > computer:
+                        print("TOO HIGH!\n")
+                    elif user_guess < computer:
+                        print("TOO LOW!\n")
+                    elif user_guess == computer:
+                        print(f"YOU GOT IT! THE NUMBER WAS {computer}\n")
+                        return
+                    else:
+                        break
+                os.system('cls')
+                print(f"You Lose! The Number was {computer}")
+                game_on = False
+        computer = random.randint(0,100)
+        print(computer)
+        print("Welcome to the Number Guessing Game!")
+        print("I am thinking of a number between 0 and 100.")
+        difficulty =input("Choose a difficulty level: easy, medium, hard\n")
+        if difficulty == "easy":
+            diff = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+            loop()
+        elif difficulty == "medium":
+            diff = [1, 2, 3, 4, 5, 6, 7]
+            loop()
+        elif difficulty == "hard":
+            diff=[1,2,3,4,5]
+            loop()
+        else:
+            print("Invalid input")
+        play_again = input("Do you want to play again? [Y/N]").upper()
+        if play_again == "Y":
+            os.system('cls')
+            play = True
+        elif play_again == "N":
+            play = False
+        else:
+            print("Invalid input")
+            play = False
+    print("Thank you for playing!")
+game()
