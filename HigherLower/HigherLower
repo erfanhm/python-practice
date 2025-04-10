@@ -1,0 +1,37 @@
+import os
+import random
+import art
+import game_data
+print("Welcome to the Highest&Lowest GAME!\n")
+print(art.logo)
+score=0
+game=True
+while game:
+    option_a=random.choice(game_data.data)
+    option_b=random.choice(game_data.data)
+    print(f"OPTION-A : {list(option_a.values())[0]}, {list(option_a.values())[2]}, {list(option_a.values())[3]}")
+    print("----------------------------------------------------------")
+    print(f"OPTION-B : {list(option_b.values())[0]}, {list(option_b.values())[2]}, {list(option_b.values())[3]}\n")
+    a_followers=list(option_a.values())[1]
+    b_followers=list(option_b.values())[1]
+    user_guess=input("Which one has more followers on instagram ? A/B\n").upper()
+    if user_guess=="A":
+        if a_followers>b_followers:
+            score+=1
+            print(f"Good Job! Score is: {score}")
+            game=True
+        elif a_followers==b_followers:
+            print(f"Draw : score is {score}")
+        else:
+            game = False
+            print(f"Wrong! , Your total score is: {score}")
+    elif user_guess=="B":
+        if a_followers<b_followers:
+            score+=1
+            print(f"Good Job! Score is: {score}")
+            game=True
+        elif a_followers==b_followers:
+            print(f"Draw : score is {score}")
+        else:
+            game = False
+            print(f"Wrong! , Your total score is: {score}")
